@@ -1,0 +1,31 @@
+:host ::ng-deep {
+  p-button {
+    .p-button {
+      background-color: #2268ff;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+      font-size: .875rem;
+      font-weight: 500;
+      line-height: 100%;
+    }
+    .p-button:hover {
+      background-color: #2769f7 !important;
+      border: none !important;
+    }
+  }
+
+  .p-inputtext {
+    width: 100%;
+    border-radius: 0;
+    margin: 0 0 10px 0;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 100%;
+  }
+  .p-inputtext:focus {
+    border-color: gray !important;
+  }
+}
+
+
