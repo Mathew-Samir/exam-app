@@ -4,10 +4,11 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DatePickerModule } from 'primeng/datepicker';
+import { Auth } from './features/auth/auth';
 
 @Component({
   selector: 'app-root',
-  imports: [ButtonModule, FormsModule, InputTextModule, DatePickerModule],
+  imports: [ButtonModule, FormsModule, InputTextModule, DatePickerModule,Auth],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
