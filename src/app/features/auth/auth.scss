@@ -1,0 +1,158 @@
+.auth-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+/* Left Side */
+.left-side {
+  background: linear-gradient(180deg, #EDF7FF 0%, #FFFFFF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  .content {
+    max-width: 400px;
+    width: 100%;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 7.625rem;
+
+      span {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 100%;
+        color: var(--color-primary);
+      }
+    }
+
+    .title {
+      font-size: 25px;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--gray-800);
+      margin-bottom: 32px;
+    }
+
+    .features {
+      border-radius: 8px;
+      padding: 24px 0;
+      .feature-item {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .icon-wrapper {
+          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #2786ce;
+          color: var(--color-primary);
+
+          img {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .feature-text {
+          flex: 1;
+
+          h3 {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--color-primary);
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+          }
+
+          p {
+            font-size: 16px;
+            font-weight: 100;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .left-side {
+    padding: 24px;
+
+    .content {
+      .title {
+        font-size: 20px;
+        margin-bottom: 24px;
+      }
+
+      .features {
+        padding: 20px;
+
+        .feature-item {
+          gap: 12px;
+          margin-bottom: 20px;
+
+          .feature-text {
+            h3 {
+              font-size: 15px;
+            }
+
+            p {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Right Side */
+.right-side {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+
+  .form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  }
+}
+
+
