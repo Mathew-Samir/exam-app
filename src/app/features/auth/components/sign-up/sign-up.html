@@ -1,1 +1,62 @@
-<p>sign-up works!</p>
+<p class="auth-title">Create Account</p>
+<div class="form-row">
+  <app-input
+      formControlName="First name"
+      label="First name"
+      type="text"
+      placeholder="First name"
+      required
+  />
+<app-input
+      formControlName="Last name"
+      label="Last name"
+      type="text"
+      placeholder="Last name"
+      required
+  />
+
+</div>
+<app-input
+      formControlName="Username"
+      label="Username"
+      type="text"
+      placeholder="user123"
+      required
+  />
+
+  <app-input
+      formControlName="Email"
+      label="Email"
+      type="email"
+      placeholder="user@example.com"
+      required
+  />
+
+  <app-input
+    formControlName="Phone"
+    label="Phone"
+    type="tel"
+    placeholder="1012345678"
+    required
+  />
+
+  <app-input
+    formControlName="password"
+    label="Password"
+    type="password"
+    placeholder="********"
+    required
+  />
+
+  <app-input
+    formControlName="Confirm Password"
+    label="Confirm Password"
+    type="password"
+    placeholder="********"
+    required
+  />
+
+
+<app-button label="Create Account" ></app-button>
+
+<p class="dont-have-account">Already have an account? <a routerLink="/login">Login</a></p>

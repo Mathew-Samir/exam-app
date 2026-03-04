@@ -1,1 +1,27 @@
-<p>login works!</p>
+
+<p class="auth-title">Login</p>
+  <app-input
+      formControlName="Username"
+      label="Username"
+      type="text"
+      placeholder="user123"
+      required
+  />
+
+
+  <app-input
+    formControlName="password"
+    label="Password"
+    type="password"
+    placeholder="********"
+    required
+  />
+
+  <div class="forgot-password">
+    <a routerLink="/reset-password">Forgot your password?</a>
+  </div>
+
+<app-button label="Login" ></app-button>
+
+<p class="dont-have-account">Don’t have an account? <a routerLink="/signup">Create yours</a></p>
+
