@@ -97,35 +97,9 @@
 }
 
 // Responsive adjustments
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .left-side {
-    padding: 24px;
-
-    .content {
-      .title {
-        font-size: 20px;
-        margin-bottom: 24px;
-      }
-
-      .features {
-        padding: 20px;
-
-        .feature-item {
-          gap: 12px;
-          margin-bottom: 20px;
-
-          .feature-text {
-            h3 {
-              font-size: 15px;
-            }
-
-            p {
-              font-size: 13px;
-            }
-          }
-        }
-      }
-    }
+    display: none;
   }
 }
 
@@ -147,7 +121,12 @@
 
   }
 }
-//Global Auth Styles
+// Responsive adjustments
+@media (max-width: 900px) {
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+}
 
 
 
