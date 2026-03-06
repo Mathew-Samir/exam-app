@@ -1,14 +1,16 @@
-<p class="auth-title">Create Account</p>
-<div class="form-row">
+<section class="auth-section">
+  <h2 class="auth-title">Create Account</h2>
+<div class="form-container" [formGroup]="signupForm">
+  <div class="form-row">
   <app-input
-      formControlName="First name"
+      formControlName="firstName"
       label="First name"
       type="text"
       placeholder="First name"
       required
   />
 <app-input
-      formControlName="Last name"
+      formControlName="lastName"
       label="Last name"
       type="text"
       placeholder="Last name"
@@ -17,7 +19,7 @@
 
 </div>
 <app-input
-      formControlName="Username"
+      formControlName="username"
       label="Username"
       type="text"
       placeholder="user123"
@@ -25,7 +27,7 @@
   />
 
   <app-input
-      formControlName="Email"
+      formControlName="email"
       label="Email"
       type="email"
       placeholder="user@example.com"
@@ -33,7 +35,7 @@
   />
 
   <app-input
-    formControlName="Phone"
+    formControlName="phone"
     label="Phone"
     type="tel"
     placeholder="1012345678"
@@ -49,14 +51,20 @@
   />
 
   <app-input
-    formControlName="Confirm Password"
+    formControlName="confirmPassword"
     label="Confirm Password"
     type="password"
     placeholder="********"
     required
   />
 
-
-<app-button label="Create Account" ></app-button>
+<div class="btn-container">
+  <app-button label="Create Account" (click)="onSubmit()" [disabled]="signupForm.invalid"></app-button>
+</div>
 
 <p class="dont-have-account">Already have an account? <a routerLink="/login">Login</a></p>
+</div>
+
+</section>
+
+

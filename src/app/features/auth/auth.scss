@@ -38,6 +38,12 @@
       margin-bottom: 32px;
     }
 
+    .auth-title {
+      font-size: 30px;
+      font-weight: 600;
+      margin-bottom: 3rem;
+    }
+
     .features {
       border-radius: 8px;
       padding: 24px 0;
@@ -131,28 +137,18 @@
   justify-content: center;
   padding: 40px;
 
-  .form-wrapper {
+.form-wrapper {
     width: 100%;
     max-width: 450px;
     display: flex;
     flex-direction: column;
     gap: 16px;
 
-    input {
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
 
-    button {
-      padding: 12px;
-      border: none;
-      background: #2563eb;
-      color: white;
-      cursor: pointer;
-      border-radius: 4px;
-    }
   }
 }
+//Global Auth Styles
+
+
 
 
