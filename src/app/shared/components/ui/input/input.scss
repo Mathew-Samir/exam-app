@@ -1,19 +1,23 @@
 .input-wrapper {
   width: 100%;
-  margin-bottom: 1rem;
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
 }
 
 .input-label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 0.9rem;
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  font-size: 1rem;
   font-weight: 500;
-  color: #444;
+  color: var(--gray-800);
+  line-height: 100%;
 }
 
 .required {
   color: red;
-  margin-left: 3px;
+
 }
 
 .input-field {
@@ -39,13 +43,14 @@
 }
 
 .input-error {
-  border-color: #e53935 !important;
+  border-color: var(--red-600) !important;
 }
 
 .error-text {
-  margin-top: 5px;
-  font-size: 0.85rem;
-  color: #e53935;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 100%;
+  color: var(--red-600);
 }
 
 .toggle-btn {
@@ -57,5 +62,5 @@
   border: none;
   cursor: pointer;
   font-size: 0.85rem;
-  color: #666;
+  color: var(--gray-400);
 }

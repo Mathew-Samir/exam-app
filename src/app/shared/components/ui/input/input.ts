@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
     styleUrl: "./input.scss",
 })
 export class InputComponent implements ControlValueAccessor {
+
     // ===== Basic =====
   @Input() type: 'text' | 'email' | 'password' | 'number' | 'tel' = 'text';
   @Input() label = '';
@@ -47,7 +48,7 @@ export class InputComponent implements ControlValueAccessor {
     if (!this.control?.errors) return '';
 
     if (this.control.errors['required'])
-      return 'This field is required';
+      return `${this.label || 'This field'} is required`;
 
     if (this.control.errors['email'])
       return 'Invalid email address';
@@ -55,8 +56,12 @@ export class InputComponent implements ControlValueAccessor {
     if (this.control.errors['minlength'])
       return `Minimum ${this.control.errors['minlength'].requiredLength} characters required`;
 
+    if (this.control.errors['pattern'])
+      return 'Invalid format';
+
     return 'Invalid value';
   }
+
 
   get inputType(): string {
     if (this.type === 'password' && this.showPasswordToggle && this.showPassword) {
