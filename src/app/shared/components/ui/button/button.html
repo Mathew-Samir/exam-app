@@ -1,1 +1,18 @@
-<p>button works!</p>
+<button
+  [attr.type]="type"
+  class="btn"
+  [disabled]="disabled || isLoading"
+  [class.btn--loading]="isLoading"
+  (click)="onClick($event)"
+>
+  @if (isLoading) {
+    <div class="loading-wrapper">
+      <div class="spinner"></div>
+      @if (loadingText) {
+        <span>{{ loadingText }}</span>
+      }
+    </div>
+  } @else {
+    {{ label }}
+  }
+</button>
