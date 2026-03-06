@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { ForgetPassword } from "./components/forget-password/forget-password";
 import { VerifyOtp } from "./components/verify-otp/verify-otp";
 import { CreateNewPassword } from "./components/create-new-password/create-new-password";
+import { RouterLink } from "@angular/router";
 
 /**
  * Steps Enum for Reset Password Flow
@@ -20,7 +21,8 @@ export enum ResetPasswordStep {
     CommonModule,
     ForgetPassword,
     VerifyOtp,
-    CreateNewPassword
+    CreateNewPassword,
+    RouterLink
   ],
 
   templateUrl: "./reset-password.html",
