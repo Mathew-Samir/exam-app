@@ -26,37 +26,7 @@
   .p-inputtext:focus {
     border-color: gray !important;
   }
-  .auth-title {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 3rem;
-  }
-  .forgot-password a{
-    text-decoration: none;
-    color: var(--blue-600);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 100%;
-    letter-spacing: 0.25px;
-    display: flex;
-    justify-content: flex-end;
-    margin: 10px 0 30px 0;
-  }
-  .dont-have-account{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 100%;
-    letter-spacing: 0.25px;
-    display: flex;
-    justify-content: center;
-    margin: 30px 0;
-    color: var(--gray-500);
-    a{
-      text-decoration: none;
-      color: var(--blue-600);
-      padding-left: 8px;
-    }
-  }
+
 }
 
 
