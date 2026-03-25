@@ -1,88 +1,111 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "npm",
-    "analytics": false
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "exam-app": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "node_modules/primeicons/primeicons.css",
-              "src/styles.scss"
-            ],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "security": {
-              "allowedHosts": []
-            },
-            "ssr": {
-              "entry": "src/server.ts"
-            }
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2MB",
-                  "maximumError": "4MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2MB",
-                  "maximumError": "4MB"
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "cli": {
+        "packageManager": "npm",
+        "analytics": false
+    },
+    "newProjectRoot": "projects",
+    "projects": {
+        "exam-app": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
                 }
-              ],
-              "outputHashing": "all"
             },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
+            "root": "",
+            "sourceRoot": "src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:application",
+                    "options": {
+                        "browser": "src/main.ts",
+                        "tsConfig": "tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            {
+                                "glob": "**/*",
+                                "input": "public"
+                            }
+                        ],
+                        "styles": ["node_modules/primeicons/primeicons.css", "src/styles.scss"],
+                        "server": "src/main.server.ts",
+                        "outputMode": "server",
+                        "security": {
+                            "allowedHosts": []
+                        },
+                        "ssr": {
+                            "entry": "src/server.ts"
+                        }
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2MB",
+                                    "maximumError": "4MB"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2MB",
+                                    "maximumError": "4MB"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular/build:dev-server",
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "exam-app:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "exam-app:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test"
+                }
             }
-          },
-          "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "exam-app:build:production"
-            },
-            "development": {
-              "buildTarget": "exam-app:build:development"
+        "MSR-Auth": {
+            "projectType": "library",
+            "root": "projects/msr-auth",
+            "sourceRoot": "projects/msr-auth/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/msr-auth/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/msr-auth/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/msr-auth/tsconfig.spec.json"
+                    }
+                }
             }
-          },
-          "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test"
         }
-      }
     }
-  }
 }
