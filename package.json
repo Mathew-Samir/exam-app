@@ -25,7 +25,7 @@
     "@primeuix/themes": "^2.0.3",
     "express": "^5.1.0",
     "git-cz": "^4.9.0",
-    "msr-auth": "^1.0.1",
+    "msr-auth": "^1.0.4",
     "primeicons": "^7.0.0",
     "primeng": "^21.1.1",
     "rxjs": "~7.8.0",

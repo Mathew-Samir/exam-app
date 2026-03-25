@@ -1,9 +1,9 @@
 {
     "name": "msr-auth",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "peerDependencies": {
-        "@angular/common": ">=21.2.5",
-        "@angular/core": ">=21.2.5"
+    "@angular/common": ">=19.0.0 <22.0.0",
+  "@angular/core": ">=19.0.0 <22.0.0"
     },
     "dependencies": {
         "tslib": "^2.3.0"
