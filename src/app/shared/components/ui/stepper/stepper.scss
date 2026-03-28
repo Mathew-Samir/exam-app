@@ -1,0 +1,100 @@
+/* ===== Stepper Layout ===== */
+.stepper-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+/* Each step + its connecting line */
+.step-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  &:last-child {
+    flex: 0 0 auto;
+  }
+}
+
+/* ===== Diamond Indicator ===== */
+.diamond-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.diamond {
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
+  z-index: 3;
+
+  /* Completed step: solid fill */
+  &.completed {
+    background-color: var(--blue-600);
+  }
+
+  /* Active step: solid fill (halo provided separately) */
+  &.active {
+    background-color: var(--blue-600);
+  }
+
+  /* Future step: outlined */
+  &.future {
+    border: 1.5px solid var(--blue-600);
+    background-color: #ffffff;
+  }
+}
+
+/* Active step halo glow */
+.diamond-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 28px;
+  height: 28px;
+  background-color: #EAF2FF;
+  z-index: 1;
+}
+
+/* ===== Connecting Lines ===== */
+.line {
+  flex: 1;
+  height: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  /* Completed: solid blue */
+  &.line--solid {
+    border-top: 1.5px solid var(--blue-600);
+  }
+
+  /* Future: dashed light blue */
+  &.line--dashed {
+    border-top: 1.5px dashed #93c5fd;
+  }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 480px) {
+  .diamond-container {
+    width: 20px;
+    height: 20px;
+  }
+  .diamond {
+    width: 12px;
+    height: 12px;
+  }
+  .diamond-halo {
+    width: 24px;
+    height: 24px;
+  }
+}
