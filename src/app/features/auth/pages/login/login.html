@@ -1,0 +1,41 @@
+<section class="auth-section">
+    <h1 class="auth-title">Login</h1>
+    <div
+        class="form-container"
+        [formGroup]="loginForm"
+    >
+        <app-input
+            formControlName="email"
+            label="Username"
+            type="email"
+            placeholder="Username123"
+        />
+
+        <app-input
+            formControlName="password"
+            label="Password"
+            type="password"
+            placeholder="********"
+        />
+
+        <div class="forgot-password">
+            <a
+                routerLink="/reset-password"
+                class="btn-forgot-password"
+                >Forgot your password?</a
+            >
+        </div>
+
+        <div class="btn-container">
+            <app-button
+                label="Login"
+                (click)="onSubmit()"
+                [disabled]="loginForm.invalid"
+            ></app-button>
+        </div>
+
+        <p class="dont-have-account">
+            Don’t have an account? <a routerLink="/signup">Create yours</a>
+        </p>
+    </div>
+</section>

@@ -1,0 +1,70 @@
+<div class="input-wrapper">
+    @if (label) {
+    <label class="input-label">
+        {{ label }} @if (required) {
+        <span class="required">*</span>
+        }
+    </label>
+    }
+
+    <div
+        class="phone-container"
+        [class.input-error]="hasError"
+    >
+        <!-- Country Selector -->
+        <div class="country-selector">
+            <p-select
+                [options]="countries"
+                [(ngModel)]="selectedCountry"
+                optionLabel="code"
+                [filter]="true"
+                filterBy="name,dialCode,code"
+                [disabled]="disabled"
+                (onChange)="onCountryChange()"
+                styleClass="custom-country-select"
+                [style]="{ border: 'none', background: 'none', boxShadow: 'none', padding: '0', minWidth: 'unset', height: 'unset' }"
+                appendTo="body"
+            >
+                <ng-template
+                    pTemplate="selectedItem"
+                    let-selectedOption
+                >
+                    <div class="selected-country">
+                        <span class="dial-info">
+                            {{ selectedOption.code }}({{ selectedOption.dialCode
+                            }})
+                        </span>
+                    </div>
+                </ng-template>
+
+                <ng-template
+                    pTemplate="item"
+                    let-country
+                >
+                    <div class="country-item">
+                        <span>{{ country.name }} ({{ country.dialCode }})</span>
+                    </div>
+                </ng-template>
+            </p-select>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Phone Number Input -->
+        <input
+            type="text"
+            class="number-input"
+            [placeholder]="placeholder"
+            [disabled]="disabled"
+            [value]="phoneNumber()"
+            (input)="onNumberChange($event)"
+            (blur)="onBlur()"
+            (focus)="onTouched()"
+        />
+    </div>
+
+    @if (hasError) {
+    <span class="error-text"> {{ errorMessage }} </span>
+    }
+</div>

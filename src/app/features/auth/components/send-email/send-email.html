@@ -1,0 +1,35 @@
+<!-- Send Email Form: shared across signup and reset flows -->
+<form
+    [formGroup]="emailForm"
+    (ngSubmit)="onSubmit()"
+    class="form-container"
+>
+    <div>
+        <!-- Email input -->
+        <app-input
+            label="Email"
+            type="email"
+            formControlName="email"
+            placeholder="Enter your email"
+        />
+    </div>
+
+    <!-- Submit button -->
+    <div class="btn-container">
+        <app-button
+            label="Next"
+            type="submit"
+            icon="pi-angle-right"
+            [isLoading]="isLoading()"
+            [disabled]="emailForm.invalid"
+        />
+    </div>
+
+    <!-- Secondary link -->
+    <p class="dont-have-account">
+        @if (flow() === AuthFlow.Signup) { Already have an account?
+        <a routerLink="/login">Login</a> } @else { Don’t have an account?
+        <a routerLink="/login">Create yours</a>
+        }
+    </p>
+</form>

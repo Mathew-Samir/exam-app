@@ -1,0 +1,28 @@
+<!-- Stepper: horizontal diamond indicators with connecting lines -->
+<div class="stepper-header">
+    @for (step of steps(); track step; let last = $last) {
+    <div class="step-wrapper">
+        <!-- Diamond indicator -->
+        <div class="diamond-container">
+            @if (step === activeStep()) {
+            <div class="diamond-halo"></div>
+            }
+            <div
+                class="diamond"
+                [class.completed]="step < activeStep()"
+                [class.active]="step === activeStep()"
+                [class.future]="step > activeStep()"
+            ></div>
+        </div>
+
+        <!-- Connecting line (omit after last step) -->
+        @if (!last) {
+        <hr
+            class="line"
+            [class.line--solid]="step < activeStep()"
+            [class.line--dashed]="step >= activeStep()"
+        />
+        }
+    </div>
+    }
+</div>

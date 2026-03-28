@@ -1,0 +1,50 @@
+<!-- Create Account Form: collects user personal info -->
+<form
+    [formGroup]="accountForm"
+    (ngSubmit)="onSubmit()"
+    class="form-container"
+>
+    <!-- Name row: first + last -->
+    <div class="form-row">
+        <app-input
+            label="First Name"
+            required
+            type="text"
+            formControlName="firstName"
+            placeholder="First name"
+        />
+        <app-input
+            label="Last Name"
+            required
+            type="text"
+            formControlName="lastName"
+            placeholder="Last name"
+        />
+    </div>
+
+    <!-- Username -->
+    <app-input
+        label="Username"
+        required
+        type="text"
+        formControlName="username"
+        placeholder="Enter your username"
+    />
+
+    <!-- Phone -->
+    <app-phone-input
+        label="Phone Number"
+        formControlName="phone"
+    />
+
+    <!-- Submit button with icon -->
+    <div class="btn-container">
+        <app-button
+            label="Next"
+            type="submit"
+            icon="pi-angle-right"
+            [isLoading]="isLoading()"
+            [disabled]="accountForm.invalid"
+        />
+    </div>
+</form>
