@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "commit": "git-cz",
-    "serve:ssr:exam-app": "node dist/exam-app/server/server.mjs"
+    "serve:ssr:exam-app": "node dist/exam-app/server/server.mjs",
+    "format": "prettier --write \"src/**/*.{ts,js,json,scss,html}\""
   },
   "private": true,
   "packageManager": "npm@11.6.2",
