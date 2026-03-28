@@ -1,55 +1,49 @@
 <!-- Sign Up: state-driven multi-step flow -->
 <div class="auth-section">
-
-  <!-- Stepper: hidden on first step, visible from step 2+ -->
-  @if (showStepper()) {
-    <app-stepper [activeStep]="currentStep()" [totalSteps]="4" />
-  }
-
-  <!-- Header: back button + title -->
-  <div class="auth-header">
-    <h1 class="auth-title">Create Account</h1>
-    @if (subtitle()) {
-      <h2 class="otp-title">{{ subtitle() }}</h2>
+    <!-- Stepper: hidden on first step, visible from step 2+ -->
+    @if (showStepper()) {
+    <app-stepper
+        [activeStep]="currentStep()"
+        [totalSteps]="4"
+    />
     }
-  </div>
 
-  <!-- Step content -->
-  <div class="form-container">
-    @switch (currentStep()) {
-      @case (AuthStep.SendEmail) {
+    <!-- Header: back button + title -->
+    <div class="auth-header">
+        <h1 class="auth-title">Create Account</h1>
+        @if (subtitle()) {
+        <h2 class="otp-title">{{ subtitle() }}</h2>
+        }
+    </div>
+
+    <!-- Step content -->
+    <div class="form-container">
+        @switch (currentStep()) { @case (AuthStep.SendEmail) {
         <app-send-email
-          [flow]="AuthFlow.Signup"
-          [initialEmail]="email()"
-          [isLoading]="isLoading()"
-          (submitted)="onSendEmail($event)"
+            [flow]="AuthFlow.Signup"
+            [initialEmail]="email()"
+            [isLoading]="isLoading()"
+            (submitted)="onSendEmail($event)"
         />
-      }
-
-      @case (AuthStep.ConfirmEmail) {
+        } @case (AuthStep.ConfirmEmail) {
         <app-confirm-email
-          [email]="email()"
-          [isLoading]="isLoading()"
-          (resend)="onSendEmail({ email: email() })"
-          (back)="goBack()"
-          (submitted)="onConfirmEmail($event)"
+            [email]="email()"
+            [isLoading]="isLoading()"
+            (resend)="onSendEmail({ email: email() })"
+            (back)="goBack()"
+            (submitted)="onConfirmEmail($event)"
         />
-      }
-
-      @case (AuthStep.CreateAccount) {
+        } @case (AuthStep.CreateAccount) {
         <app-create-account
-          [isLoading]="isLoading()"
-          (submitted)="onCreateAccount($event)"
+            [isLoading]="isLoading()"
+            (submitted)="onCreateAccount($event)"
         />
-      }
-
-      @case (AuthStep.CreateNewPassword) {
+        } @case (AuthStep.CreateNewPassword) {
         <app-create-new-password
-          [flow]="AuthFlow.Signup"
-          [isLoading]="isLoading()"
-          (submitted)="onCreatePassword($event)"
+            [flow]="AuthFlow.Signup"
+            [isLoading]="isLoading()"
+            (submitted)="onCreatePassword($event)"
         />
-      }
-    }
-  </div>
+        } }
+    </div>
 </div>

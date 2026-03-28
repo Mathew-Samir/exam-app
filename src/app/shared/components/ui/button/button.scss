@@ -1,64 +1,64 @@
 /* ===== Shared Button Styles ===== */
 
 .btn {
-  width: 100%;
-  border: none;
-  padding: 0.75rem 1rem;
-  font-weight: 500;
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  background-color: var(--blue-600);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
+    width: 100%;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: var(--blue-600);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
 
-  &:hover:not(:disabled) {
-    filter: brightness(0.95);
-  }
+    &:hover:not(:disabled) {
+        filter: brightness(0.95);
+    }
 
-  &:active:not(:disabled) {
-    transform: scale(0.98);
-  }
+    &:active:not(:disabled) {
+        transform: scale(0.98);
+    }
 
-  &:disabled {
-    background-color: var(--blue-50);
-    border: 1px solid var(--blue-600);
-    cursor: not-allowed;
-    color: var(--gray-800);
-  }
+    &:disabled {
+        background-color: var(--blue-50);
+        border: 1px solid var(--blue-600);
+        cursor: not-allowed;
+        color: var(--gray-800);
+    }
 }
 
 /* Loading state */
 .btn--loading {
-  pointer-events: none;
+    pointer-events: none;
 }
 
 .loading-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 /* Spinner animation */
 .spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #ffffff;
-  border-top: 2px solid transparent;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ffffff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Icon inside button */
 .btn-icon {
-  font-size: 0.85rem;
+    font-size: 0.85rem;
 }

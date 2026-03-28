@@ -1,4 +1,4 @@
 export enum AuthFlow {
-  Signup = 'signup',
-  Reset = 'reset'
+    Signup = "signup",
+    Reset = "reset",
 }

@@ -1,42 +1,40 @@
 <div class="input-wrapper">
-
-  @if (label) {
+    @if (label) {
     <label class="input-label">
-      {{ label }}
-      @if (required) {
+        {{ label }} @if (required) {
         <span class="required">*</span>
-      }
+        }
     </label>
-  }
-
-  <div class="input-field">
-    <input
-      [type]="inputType"
-      [value]="value"
-      [placeholder]="placeholder"
-      [disabled]="disabled"
-      (input)="onInput($event)"
-      (blur)="onBlur()"
-      class="input"
-      [class.input-error]="hasError"
-    />
-
-    @if (type === 'password' && showPasswordToggle) {
-      <button
-        type="button"
-        class="toggle-btn"
-        (click)="togglePassword()"
-        tabindex="-1"
-      >
-        <i class="pi" [ngClass]="showPassword ? 'pi-eye' : 'pi-eye-slash'"></i>
-      </button>
     }
-  </div>
 
-  @if (hasError) {
-    <p class="error-text">
-      {{ errorMessage }}
-    </p>
-  }
+    <div class="input-field">
+        <input
+            [type]="inputType"
+            [value]="value"
+            [placeholder]="placeholder"
+            [disabled]="disabled"
+            (input)="onInput($event)"
+            (blur)="onBlur()"
+            class="input"
+            [class.input-error]="hasError"
+        />
 
+        @if (type === 'password' && showPasswordToggle) {
+        <button
+            type="button"
+            class="toggle-btn"
+            (click)="togglePassword()"
+            tabindex="-1"
+        >
+            <i
+                class="pi"
+                [ngClass]="showPassword ? 'pi-eye' : 'pi-eye-slash'"
+            ></i>
+        </button>
+        }
+    </div>
+
+    @if (hasError) {
+    <p class="error-text">{{ errorMessage }}</p>
+    }
 </div>

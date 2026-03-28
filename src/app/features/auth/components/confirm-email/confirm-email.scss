@@ -9,7 +9,6 @@
     flex-direction: column;
     gap: 0.625rem;
 
-
     .email-section {
         display: flex;
         flex-direction: column;
@@ -55,8 +54,8 @@
 .otp-wrapper {
     display: flex;
     justify-content: center;
-    margin-bottom: .5rem;
-    margin-top: .625rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.625rem;
 
     :host ::ng-deep .p-inputotp-input {
         width: 3rem;

@@ -2,11 +2,17 @@
 <div class="form-container">
     <div class="otp-header">
         <div class="email-section">
-            <p class="otp-info">Please enter the 6-digits code we have sent to:</p>
+            <p class="otp-info">
+                Please enter the 6-digits code we have sent to:
+            </p>
             <div class="email-row">
                 <span class="email">{{ email() }}</span>
                 <span class="dot">.</span>
-                <a (click)="onEdit()" class="btn-edit">Edit</a>
+                <a
+                    (click)="onEdit()"
+                    class="btn-edit"
+                    >Edit</a
+                >
             </div>
         </div>
     </div>
@@ -24,7 +30,8 @@
     <div class="timer-section">
         @if (countdown() > 0) {
         <p class="timer-text">
-            You can request another code in: <span class="timer">{{ countdown() }}s</span>
+            You can request another code in:
+            <span class="timer">{{ countdown() }}s</span>
         </p>
         } @else {
         <p class="dont-have-account">
