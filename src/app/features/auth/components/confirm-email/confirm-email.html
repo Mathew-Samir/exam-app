@@ -1,0 +1,46 @@
+<!-- Confirm Email: OTP verification step -->
+<div class="form-container">
+    <div class="otp-header">
+        <div class="email-section">
+            <p class="otp-info">Please enter the 6-digits code we have sent to:</p>
+            <div class="email-row">
+                <span class="email">{{ email() }}</span>
+                <span class="dot">.</span>
+                <a (click)="onEdit()" class="btn-edit">Edit</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP input -->
+    <div class="otp-wrapper">
+        <p-inputotp
+            [(ngModel)]="code"
+            [length]="6"
+            (onComplete)="onCodeComplete($event)"
+        />
+    </div>
+
+    <!-- Countdown timer / resend link -->
+    <div class="timer-section">
+        @if (countdown() > 0) {
+        <p class="timer-text">
+            You can request another code in: <span class="timer">{{ countdown() }}s</span>
+        </p>
+        } @else {
+        <p class="dont-have-account">
+            Didn't receive a code?
+            <a (click)="resendCode()">Resend</a>
+        </p>
+        }
+    </div>
+
+    <!-- Submit button -->
+    <div class="btn-container">
+        <app-button
+            label="Verify Code"
+            (clicked)="onSubmit()"
+            [isLoading]="isLoading()"
+            [disabled]="code.length < 6"
+        />
+    </div>
+</div>

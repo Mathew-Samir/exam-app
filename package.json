@@ -25,6 +25,7 @@
     "@primeuix/themes": "^2.0.3",
     "express": "^5.1.0",
     "git-cz": "^4.9.0",
+    "libphonenumber-js": "^1.12.40",
     "msr-auth": "^1.0.4",
     "primeicons": "^7.0.0",
     "primeng": "^21.1.1",
