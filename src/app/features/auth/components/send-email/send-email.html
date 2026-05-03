@@ -28,8 +28,8 @@
     <!-- Secondary link -->
     <p class="dont-have-account">
         @if (flow() === AuthFlow.Signup) { Already have an account?
-        <a routerLink="/login">Login</a> } @else { Don’t have an account?
-        <a routerLink="/login">Create yours</a>
+        <a routerLink="/auth/login">Login</a> } @else { Don’t have an account?
+        <a routerLink="/auth/login">Create yours</a>
         }
     </p>
 </form>

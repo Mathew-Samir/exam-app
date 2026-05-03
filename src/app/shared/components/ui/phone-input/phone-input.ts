@@ -6,16 +6,15 @@ import {
     signal,
     booleanAttribute,
     ChangeDetectionStrategy,
+    OnInit,
 } from "@angular/core";
 import {
     ControlValueAccessor,
     NgControl,
     Validator,
     ValidationErrors,
-    NG_VALIDATORS,
     AbstractControl,
 } from "@angular/forms";
-import {forwardRef} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {SelectModule} from "primeng/select";
 import {FormsModule} from "@angular/forms";
@@ -41,15 +40,8 @@ export interface Country {
     templateUrl: "./phone-input.html",
     styleUrl: "./phone-input.scss",
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: NG_VALIDATORS,
-            useExisting: forwardRef(() => PhoneInputComponent),
-            multi: true,
-        },
-    ],
 })
-export class PhoneInputComponent implements ControlValueAccessor, Validator {
+export class PhoneInputComponent implements ControlValueAccessor, Validator, OnInit {
     @Input() label = "Phone";
     @Input() placeholder = "1012345678";
     @Input({transform: booleanAttribute}) required = false;
@@ -99,6 +91,14 @@ export class PhoneInputComponent implements ControlValueAccessor, Validator {
     constructor(@Optional() @Self() public ngControl: NgControl) {
         if (this.ngControl) {
             this.ngControl.valueAccessor = this;
+        }
+    }
+
+    ngOnInit(): void {
+        if (this.ngControl && this.ngControl.control) {
+            const control = this.ngControl.control;
+            control.addValidators(this.validate.bind(this));
+            control.updateValueAndValidity({emitEvent: false});
         }
     }
 
@@ -202,11 +202,11 @@ export class PhoneInputComponent implements ControlValueAccessor, Validator {
         }
     }
 
-    registerOnChange(fn: any): void {
+    registerOnChange(fn: (value: string) => void): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any): void {
+    registerOnTouched(fn: () => void): void {
         this.onTouched = fn;
     }
 

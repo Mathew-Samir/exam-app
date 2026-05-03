@@ -21,6 +21,14 @@ export class AuthFacade {
     readonly loading = signal<boolean>(false);
     readonly error = signal<string | null>(null);
     readonly userEmail = signal<string | null>(null); // To store email across signup steps
+    readonly registrationData = signal<RegisterRequest | null>(null); // To store info across signup steps
+
+    /**
+     * Set temporary registration data
+     */
+    setRegistrationData(data: RegisterRequest | null): void {
+        this.registrationData.set(data);
+    }
 
     /**
      * Send email verification code
@@ -72,9 +80,16 @@ export class AuthFacade {
     }
 
     /**
+     * Get dynamic redirect URL for password reset
+     */
+    getRedirectUrl(): string {
+        return `${window.location.origin}/auth/create-new-password`;
+    }
+
+    /**
      * Forgot password request
      */
-    forgotPassword(payload: ForgotPasswordRequest): Observable<AuthResponse> {
+    forgotPassword(payload: ForgotPasswordRequest & {redirectUrl?: string}): Observable<AuthResponse> {
         this.setLoading(true);
         return this.msrAuth.forgotPassword(payload).pipe(
             tap((res) => {
@@ -108,8 +123,9 @@ export class AuthFacade {
         this.loading.set(value);
     }
 
-    private handleError(error: any): Observable<never> {
-        const message = error.error?.message || error.message || "An unexpected error occurred";
+    private handleError(error: unknown): Observable<never> {
+        const err = error as { error?: { message?: string }, message?: string };
+        const message = err.error?.message || err.message || "An unexpected error occurred";
         this.error.set(message);
         throw error;
     }
