@@ -1,0 +1,50 @@
+.timer-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .timer-svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+
+        circle {
+            fill: none;
+            stroke-width: 10;
+            stroke-linecap: square;
+        }
+
+        .timer-bg {
+            stroke: #E9ECEF;
+        }
+
+        .timer-progress {
+            stroke: #0D6EFD;
+            stroke-dasharray: 282.6;
+            transition: stroke-dashoffset 1s linear;
+        }
+    }
+
+    .time-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        font-family: 'Inter', sans-serif;
+        color: #1A1C1E;
+
+        i {
+            font-size: 14px;
+            color: #0D6EFD;
+        }
+
+        span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+    }
+}

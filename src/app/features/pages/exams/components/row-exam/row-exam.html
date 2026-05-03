@@ -1,0 +1,40 @@
+<div class="exam-row-container">
+  <div class="exam-image-box">
+    <img [ngSrc]="exam().image" width="120" height="120" [alt]="exam().title" priority>
+  </div>
+
+  <div class="exam-info">
+    <div class="info-top">
+      <h3 class="exam-title">{{ exam().title }}</h3>
+      <div class="exam-meta">
+        <div class="meta-item">
+          <i class="pi pi-question-circle"></i>
+          <span>{{ exam().questionsCount }} Questions</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <i class="pi pi-clock"></i>
+          <span>{{ exam().duration }} Minutes</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="exam-description">
+      {{ displayDescription() }}
+      @if (showSeeMore()) {
+        <span class="see-more" (click)="toggleExpand($event)">
+          {{ isExpanded() ? 'See Less' : 'See More' }}
+        </span>
+      }
+    </p>
+
+    <div class="exam-footer">
+      <button
+        class="btn-start"
+        [routerLink]="['/dashboard/diplomas', diplomaId(), 'exams', exam().id, 'questions']"
+      >
+        START &rarr;
+      </button>
+    </div>
+  </div>
+</div>

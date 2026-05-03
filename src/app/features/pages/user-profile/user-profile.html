@@ -1,0 +1,16 @@
+<div class="profile-layout">
+  <div class="sidebar-section">
+    <app-user-sidbar
+      (profileClicked)="onProfileClick()"
+      (changePasswordClicked)="onChangePasswordClick()"
+      [activeView]="activeView()"
+    ></app-user-sidbar>
+  </div>
+  <div class="content-section">
+    @if (activeView() === 'profile') {
+      <app-user-info></app-user-info>
+    } @else if (activeView() === 'change-password') {
+      <app-change-password></app-change-password>
+    }
+  </div>
+</div>

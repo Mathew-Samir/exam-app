@@ -1,0 +1,265 @@
+.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+
+  .field-group {
+    flex: 1;
+  }
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #344054;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+input[pInputText] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #101828;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: #4461f2;
+    box-shadow: 0 0 0 4px rgba(68, 97, 242, 0.1);
+  }
+
+  &::placeholder {
+    color: #667085;
+  }
+}
+
+.disabled-input {
+  background-color: #f9fafb !important;
+  color: #667085 !important;
+  cursor: not-allowed;
+}
+
+.label-with-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .action-link {
+    background: none;
+    border: none;
+    color: #4461f2;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #ffffff;
+
+  &:focus-within {
+    border-color: #4461f2;
+    box-shadow: 0 0 0 4px rgba(68, 97, 242, 0.1);
+  }
+
+  .country-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-right: 1px solid #d0d5dd;
+    background-color: #f9fafb;
+    color: #101828;
+    font-size: 16px;
+    cursor: pointer;
+
+    .flag-icon {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    i {
+      font-size: 12px;
+      color: #667085;
+    }
+  }
+
+  input[pInputText] {
+    border: none;
+    border-radius: 0;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+
+  button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .delete-btn {
+    background-color: #fff1f1;
+    color: #f24444;
+    border: none;
+
+    &:hover {
+      background-color: #ffe4e4;
+    }
+  }
+
+  ::ng-deep .save-btn {
+    background-color: #155dfc !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 4px !important;
+
+    &:hover {
+      background-color: #0d4edb !important;
+    }
+
+    &:disabled {
+      background-color: #94b2f1 !important;
+      cursor: not-allowed !important;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+::ng-deep {
+  .p-confirmdialog {
+    .p-dialog-content {
+      padding: 32px 24px;
+    }
+
+    .p-dialog-footer {
+      padding: 16px 24px;
+      border-top: 1px solid #f2f4f7;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      background-color: #ffffff;
+    }
+  }
+}
+
+.confirm-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.warning-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background-color: #fff1f1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+
+  .warning-icon {
+    font-size: 32px;
+    color: #f24444;
+  }
+}
+
+.confirm-message {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f24444;
+  margin: 0 0 8px 0;
+}
+
+.confirm-submessage {
+  font-size: 14px;
+  color: #667085;
+  margin: 0;
+}
+
+.confirm-footer {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+
+  button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  ::ng-deep .cancel-btn {
+    background-color: #f2f4f7 !important;
+    color: #344054 !important;
+    border: none !important;
+
+    &:hover {
+      background-color: #eaecf0 !important;
+    }
+  }
+
+  ::ng-deep .confirm-delete-btn {
+    background-color: #e31b1b !important;
+    color: #ffffff !important;
+    border: none !important;
+
+    &:hover {
+      background-color: #c01010 !important;
+    }
+  }
+}

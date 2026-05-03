@@ -1,0 +1,145 @@
+.sidebar-container {
+  background-color: #ffffff;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  border-radius: 16px;
+  min-height: 500px;
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #878787;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+
+  i {
+    font-size: 20px;
+  }
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+
+  &.active {
+    background-color: #edf3ff;
+    color: #4461f2;
+
+    i {
+      color: #4461f2;
+    }
+  }
+}
+
+.logout-container {
+  margin-top: auto;
+}
+
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: none;
+  background-color: #fff1f1;
+  color: #f24444;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  i {
+    font-size: 20px;
+    transform: rotate(180deg); // To match the arrow pointing out
+  }
+
+  &:hover {
+    background-color: #ffe4e4;
+  }
+}
+
+.profile-header {
+  margin-bottom: 40px;
+  padding: 0 16px;
+  display: none;
+
+  .profile-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .avatar-container {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+
+    .user-name {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #155dfc;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .user-email {
+      margin: 2px 0 0 0;
+      font-size: 14px;
+      color: #878787;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+.initials-avatar {
+  width: 100%;
+  height: 100%;
+  background-color: #edf3ff;
+  color: #4461f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+}

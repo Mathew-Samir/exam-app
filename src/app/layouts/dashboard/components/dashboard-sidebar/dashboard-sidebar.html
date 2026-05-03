@@ -1,0 +1,72 @@
+<div class="sidebar">
+    <!-- Logo -->
+    <div class="logo">
+        <img
+            src="/images/Logo 1.svg"
+            alt="logo"
+            loading="lazy"
+            decoding="async"
+        />
+        <h2>
+            <img
+                src="images/exam-icon 1.svg"
+                alt="logo"
+                loading="lazy"
+                decoding="async"
+            />
+            Exam App
+        </h2>
+    </div>
+
+    <!-- Menu -->
+    <ul class="menu">
+
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <a routerLink="/dashboard/diplomas">
+                <img
+                    src="images/graduation-cap-active.svg"
+                    alt="graduation"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <p>Diplomas</p>
+            </a>
+        </li>
+
+        <li routerLinkActive="active">
+            <a routerLink="/dashboard/user-profile">
+                <img
+                    src="images/user-round.svg"
+                    alt="user-round"
+                    loading="lazy"
+                    decoding="async"
+                />
+                <p>Account Settings</p>
+            </a>
+        </li>
+    </ul>
+
+    <!-- User -->
+    <div class="user">
+        @if (user()?.profilePhoto) {
+            <img [src]="user()?.profilePhoto" alt="user" />
+        } @else {
+            <div class="avatar-placeholder">
+                {{ (user()?.firstName?.charAt(0) || '') + (user()?.lastName?.charAt(0) || '') }}
+            </div>
+        }
+        <div class="info">
+            <div class="name">{{ user()?.firstName }} {{ user()?.lastName }}</div>
+            <div class="email">{{ user()?.email }}</div>
+        </div>
+        <div class="logout-dropdown">
+            <p-menu #menu [model]="items" appendTo="body" styleClass="upward-menu" [popup]="true" />
+            <p-button
+                (click)="menu.toggle($event)"
+                icon="pi pi-ellipsis-v"
+                [text]="true"
+                severity="secondary"
+            />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+.dialog-content {
+  padding: 0 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stepper-wrapper {
+  margin-bottom: 32px;
+}
+
+.main-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #101828;
+  margin: 0;
+  text-align: left;
+}
+
+.sub-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4461f2;
+  text-align: left;
+  margin: 12px 0 32px 0;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #344054;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: #f2f4f7;
+  margin: 0 -24px 24px -24px;
+}
+
+.next-btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #155dfc !important;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+
+  span {
+    flex: 1;
+    text-align: center;
+  }
+
+  i {
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: #0d4edb !important;
+  }
+
+  &:disabled {
+    background-color: #94b2f1 !important;
+    cursor: not-allowed;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+::ng-deep {
+  .p-inputtext {
+    width: 100%;
+    border-radius: 4px;
+    border-color: #d0d5dd;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #101828;
+
+    &::placeholder {
+      color: #98a2b3;
+    }
+
+    &:focus {
+      border-color: #4461f2;
+      box-shadow: 0 0 0 4px rgba(68, 97, 242, 0.1);
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<!-- Results Container: displays exam submission results with chart and analytics -->
+<div class="results-container">
+  <h2 class="results-title">Results:</h2>
+
+  @if (!isLoading()) {
+    <div class="results-content">
+      <!-- Left Section: Summary Chart -->
+      <div class="summary-section">
+        <div class="chart-wrapper">
+          <p-chart type="doughnut" [data]="chartData()" [options]="chartOptions" height="200px" class="w-[100rem]"></p-chart>
+        </div>
+
+        <div class="legend">
+          <div class="legend-item">
+            <span class="color-box correct"></span>
+            <span class="label">Correct:</span>
+            <span class="value">{{ submission()?.correctAnswers }}</span>
+          </div>
+          <div class="legend-item">
+            <span class="color-box incorrect"></span>
+            <span class="label">Incorrect:</span>
+            <span class="value">{{ submission()?.wrongAnswers }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Section: Analytics List -->
+      <div class="analytics-section">
+        <div class="analytics-list">
+          @for (item of analytics(); track item.questionText) {
+            <div class="question-card">
+              <h3 class="question-text">{{ item.questionText }}</h3>
+
+              <div class="answers-list">
+                <!-- Selected Answer (if incorrect) -->
+                @if (!item.isCorrect && item.selectedAnswer) {
+                  <div class="answer-item incorrect">
+                    <p-radioButton
+                      [ngModel]="item.selectedAnswer.id"
+                      [value]="item.selectedAnswer.id"
+                      [disabled]="true"
+                      class="incorrect-radio">
+                    </p-radioButton>
+                    <span>{{ item.selectedAnswer.text }}</span>
+                  </div>
+                }
+
+                <!-- Correct Answer -->
+                <div class="answer-item correct">
+                  <p-radioButton
+                    [ngModel]="item.correctAnswer.id"
+                    [value]="item.correctAnswer.id"
+                    [disabled]="true"
+                    class="correct-radio">
+                  </p-radioButton>
+                  <span>{{ item.correctAnswer.text }}</span>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="results-footer">
+      <button pButton class="p-button-outlined restart-btn" (click)="restart()">
+        <i class="pi pi-refresh"></i>
+        <span>Restart</span>
+      </button>
+      <button pButton class="explore-btn" (click)="explore()">
+        <i class="pi pi-compass"></i>
+        <span>Explore</span>
+      </button>
+    </div>
+  } @else {
+    <!-- Loading State -->
+    <div class="loading-skeleton">
+      <div class="skeleton-summary">
+        <p-skeleton shape="circle" size="200px"></p-skeleton>
+        <p-skeleton width="150px" height="2rem" styleClass="mt-4"></p-skeleton>
+        <p-skeleton width="150px" height="2rem" styleClass="mt-2"></p-skeleton>
+      </div>
+      <div class="skeleton-list">
+        <p-skeleton width="100%" height="100px" styleClass="mb-3"></p-skeleton>
+        <p-skeleton width="100%" height="100px" styleClass="mb-3"></p-skeleton>
+        <p-skeleton width="100%" height="100px" styleClass="mb-3"></p-skeleton>
+      </div>
+    </div>
+  }
+</div>

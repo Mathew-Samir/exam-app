@@ -1,0 +1,14 @@
+<div class="card-container">
+  <div class="image-wrapper">
+    <img [ngSrc]="imageUrl() || 'images/cardTest.png'" [alt]="title()" fill priority>
+  </div>
+
+  <div class="card-overlay" [class.expanded]="isExpanded()" (click)="toggleDescription($event)">
+    <div class="content">
+      <h3 class="title">{{ title() }}</h3>
+      <p class="description" [class.line-clamp]="!isExpanded()">
+        {{ description() }}
+      </p>
+    </div>
+  </div>
+</div>
