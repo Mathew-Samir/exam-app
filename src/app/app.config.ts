@@ -2,13 +2,15 @@ import {ApplicationConfig, provideBrowserGlobalErrorListeners} from "@angular/co
 import {provideRouter} from "@angular/router";
 import {provideAnimations} from "@angular/platform-browser/animations";
 import {providePrimeNG} from "primeng/config";
-import {MessageService} from "primeng/api";
+import { ConfirmationService, MessageService } from "primeng/api";
+import { DialogService } from "primeng/dynamicdialog";
 import Aura from "@primeuix/themes/aura";
 import {routes} from "./app.routes";
 import {provideClientHydration, withEventReplay} from "@angular/platform-browser";
-import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {provideHttpClient, withFetch, withInterceptors} from "@angular/common/http";
 import {provideMsrAuth} from "msr-auth";
 import {httpResponseInterceptor} from "./core/interceptors/http-response/http-response-interceptor";
+import {headerInterceptor} from "./core/interceptors/header/header-interceptor";
 
 export const appConfig: ApplicationConfig = {
     providers: [
@@ -17,7 +19,9 @@ export const appConfig: ApplicationConfig = {
         provideClientHydration(withEventReplay()),
         provideAnimations(),
         MessageService,
-        provideHttpClient(withInterceptors([httpResponseInterceptor])),
+        ConfirmationService,
+        DialogService,
+        provideHttpClient(withInterceptors([headerInterceptor, httpResponseInterceptor]), withFetch()),
         provideMsrAuth({
             baseUrl: "https://exam-app.elevate-bootcamp.cloud/api",
             endpoints: {
@@ -32,6 +36,11 @@ export const appConfig: ApplicationConfig = {
         providePrimeNG({
             theme: {
                 preset: Aura,
+                options: {
+                    prefix: "p",
+                    darkModeSelector: "light-mode",
+                    cssLayer: false,
+                },
             },
         }),
     ],

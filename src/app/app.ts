@@ -5,11 +5,11 @@ import {FormsModule} from "@angular/forms";
 import {InputTextModule} from "primeng/inputtext";
 import {DatePickerModule} from "primeng/datepicker";
 import {Toast} from "primeng/toast";
-import {Auth} from "./features/auth/auth";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: "app-root",
-    imports: [ButtonModule, FormsModule, InputTextModule, DatePickerModule, Toast, Auth],
+    imports: [RouterOutlet,ButtonModule, FormsModule, InputTextModule, DatePickerModule, Toast],
     templateUrl: "./app.html",
     styleUrl: "./app.scss",
 })

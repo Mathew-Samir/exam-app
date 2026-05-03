@@ -1,0 +1,34 @@
+<div class="exams-container">
+  @if (!isLoading()) {
+    <div class="diploma-header">
+      <h2>{{ diploma()?.title }} Exams</h2>
+    </div>
+
+    <div class="exams-list">
+      @for (exam of diploma()?.exams; track exam.id) {
+        <app-exam-row [exam]="exam" [diplomaId]="diploma()!.id" />
+      } @empty {
+        <div class="no-exams">
+          <p>No exams available for this diploma yet.</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="skeleton-list">
+      @for (i of [1,2,3,4]; track i) {
+        <div class="skeleton-row">
+          <p-skeleton width="160px" height="120px" borderRadius="12px" />
+          <div class="skeleton-info">
+            <p-skeleton width="30%" height="24px" styleClass="mb-3" />
+            <p-skeleton width="80%" height="16px" styleClass="mb-2" />
+            <p-skeleton width="60%" height="16px" styleClass="mb-4" />
+            <div class="flex gap-3">
+              <p-skeleton width="80px" height="14px" />
+              <p-skeleton width="80px" height="14px" />
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

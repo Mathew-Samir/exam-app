@@ -3,7 +3,6 @@ import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {AuthFacade} from "../../../../core/services/auth/auth.facade";
 import {AuthFlow} from "../../../../core/enums/auth-flow";
 import {SendEmail} from "../../components/send-email/send-email";
-import {CreateNewPassword} from "../../components/create-new-password/create-new-password";
 import {PasswordResetSent} from "../../components/password-reset-sent/password-reset-sent";
 import {MessageService} from "primeng/api";
 
@@ -11,7 +10,6 @@ import {MessageService} from "primeng/api";
 export enum ResetPasswordStep {
     SendEmail = "send-email",
     PasswordResetSent = "password-reset-sent",
-    CreateNewPassword = "create-new-password",
 }
 
 /**
@@ -20,7 +18,7 @@ export enum ResetPasswordStep {
  */
 @Component({
     selector: "app-reset-password",
-    imports: [SendEmail, PasswordResetSent, CreateNewPassword, RouterLink],
+    imports: [SendEmail, PasswordResetSent, RouterLink],
     templateUrl: "./reset-password.html",
     styleUrl: "./reset-password.scss",
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -41,58 +39,34 @@ export class ResetPassword implements OnInit {
     protected readonly ResetPasswordStep = ResetPasswordStep;
     protected readonly AuthFlow = AuthFlow;
 
-    /** Check for deep-link token on init */
+    /** Check for deep-link token on init and redirect to dedicated route */
     ngOnInit(): void {
         this.route.queryParams.subscribe((params) => {
             if (params["token"]) {
-                this.resetToken = params["token"];
-                this.currentStep.set(ResetPasswordStep.CreateNewPassword);
+                this.router.navigate(["/auth/create-new-password"], {
+                    queryParams: {token: params["token"]},
+                });
             }
         });
     }
 
     /** Step 1: Request password reset email */
     onSendEmail(data: {email: string}): void {
-        this.authFacade.forgotPassword({email: data.email}).subscribe({
-            next: (res) => {
-                if (res.status) {
-                    this.email.set(data.email);
-                    this.currentStep.set(ResetPasswordStep.PasswordResetSent);
-                }
-            },
-        });
-    }
-
-    /** Step 3: Submit new password with token */
-    onResetPassword(data: {password: string; rePassword: string}): void {
-        if (!this.resetToken) {
-            this.messageService.add({
-                severity: "error",
-                summary: "Error",
-                detail: "Missing reset token. Please check your email link.",
-            });
-            return;
-        }
-
         this.authFacade
-            .resetPassword({
-                token: this.resetToken,
-                newPassword: data.password,
-                confirmPassword: data.rePassword,
+            .forgotPassword({
+                email: data.email,
+                redirectUrl: this.authFacade.getRedirectUrl(),
             })
             .subscribe({
                 next: (res) => {
                     if (res.status) {
-                        this.messageService.add({
-                            severity: "success",
-                            summary: "Success",
-                            detail: "Password reset successful! Redirecting to login...",
-                        });
-                        setTimeout(() => this.router.navigate(["/login"]), 2000);
+                        this.email.set(data.email);
+                        this.currentStep.set(ResetPasswordStep.PasswordResetSent);
                     }
                 },
             });
     }
+
 
     /** Navigate back from success page */
     goBack(): void {
@@ -102,6 +76,6 @@ export class ResetPassword implements OnInit {
     }
 
     onRegisterNavigate(): void {
-        this.router.navigate(["/register"]);
+        this.router.navigate(["/auth/register"]);
     }
 }

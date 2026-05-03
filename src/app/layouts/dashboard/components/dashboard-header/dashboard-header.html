@@ -1,0 +1,54 @@
+<section>
+    <div class="breadcrumb-container">
+        <p-breadcrumb
+            [model]="items()"
+            [home]="home"
+        >
+            <ng-template
+                pTemplate="item"
+                let-item
+            >
+                @if (item.routerLink) {
+                <a
+                    [routerLink]="item.routerLink"
+                    class="p-breadcrumb-item-link"
+                >
+                    @if (item.icon) {
+                    <span [class]="item.icon"></span>
+                    }
+                    <span class="p-breadcrumb-item-text">{{ item.label }}</span>
+                </a>
+                } @else { @if (item.icon) {
+                <span [class]="item.icon"></span>
+                }
+                <span class="p-breadcrumb-item-text">{{ item.label }}</span>
+                }
+            </ng-template>
+            <ng-template #separator> / </ng-template>
+        </p-breadcrumb>
+    </div>
+    <div class="header-container">
+        <button
+            class="back-btn"
+            (click)="goBack()"
+        >
+            <img
+                ngSrc="/images/chevron-left.svg"
+                alt=""
+                width="25"
+                height="25"
+            />
+        </button>
+        <div class="header-dashboard">
+            <div class="header-dashboard-img">
+                <img
+                    [ngSrc]="currentIcon()"
+                    alt=""
+                    width="45"
+                    height="45"
+                />
+            </div>
+            <p>{{ currentTitle() }}</p>
+        </div>
+    </div>
+</section>

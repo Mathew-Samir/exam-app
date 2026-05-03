@@ -1,0 +1,48 @@
+<div class="dialog-content">
+  <div class="stepper-wrapper">
+    <app-stepper [activeStep]="step() - 1" [totalSteps]="2"></app-stepper>
+  </div>
+
+  @if (step() === 1) {
+  <div class="step-email">
+    <h2 class="main-title">Change Email</h2>
+    <p class="sub-title">Enter your new email</p>
+
+    <form [formGroup]="emailForm" (ngSubmit)="sendOTP()">
+      <div class="field-group">
+        <label for="email">Email</label>
+        <input
+          pInputText
+          id="email"
+          formControlName="email"
+          placeholder="user@example.com"
+          class="full-width"
+        />
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="actions">
+        <button
+          pButton
+          type="submit"
+          [loading]="loading()"
+          [disabled]="emailForm.invalid"
+          class="next-btn"
+        >
+          <span>Next</span>
+          <i class="pi pi-chevron-right"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+  } @else if (step() === 2) {
+  <app-confirm-email
+    [email]="email"
+    [isLoading]="loading()"
+    (submitted)="onOTPSubmitted($event)"
+    (back)="goBack()"
+    (resend)="sendOTP()"
+  ></app-confirm-email>
+  }
+</div>

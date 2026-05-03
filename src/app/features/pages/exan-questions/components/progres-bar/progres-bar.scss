@@ -1,0 +1,45 @@
+.progress-bar-container {
+    width: 100%;
+    margin-bottom: 24px;
+
+    .progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+
+
+        .exam-title {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 100%;
+            color: var(--gray-800);
+        }
+
+        .question-count {
+            font-size: 14px;
+            font-weight: 700 !important;
+            line-height: 100%;
+            color: #6C757D;
+
+            .current-num {
+                color: #0D6EFD;
+                font-weight: 600;
+            }
+        }
+    }
+
+    ::ng-deep {
+        .p-progressbar {
+            height: 16px;
+            border-radius: 0;
+            background: #E9ECEF;
+
+            .p-progressbar-value {
+                background: #0D6EFD;
+                border-radius: 0;
+                transition: width 0.3s ease;
+            }
+        }
+    }
+}

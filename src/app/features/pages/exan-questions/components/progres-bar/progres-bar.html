@@ -1,0 +1,9 @@
+<div class="progress-bar-container">
+    <div class="progress-info">
+        <span class="exam-title">{{ title() }}</span>
+        <span class="question-count">
+            Question <span class="current-num">{{ current() }}</span> of {{ total() }}
+        </span>
+    </div>
+    <p-progressBar [value]="progressValue()" [showValue]="false"></p-progressBar>
+</div>

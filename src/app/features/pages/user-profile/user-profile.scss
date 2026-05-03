@@ -1,0 +1,26 @@
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  padding: 24px;
+  height: 100%;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 100px); // Adjust based on header height if any
+}
+
+.sidebar-section {
+  height: 100%;
+}
+
+.content-section {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+}
+
+@media (max-width: 992px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+}

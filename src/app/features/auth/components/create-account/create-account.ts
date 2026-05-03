@@ -31,7 +31,7 @@ export class CreateAccount {
     /** Validate and emit account data */
     onSubmit(): void {
         if (this.accountForm.valid) {
-            this.submitted.emit(this.accountForm.getRawValue() as any);
+            this.submitted.emit(this.accountForm.getRawValue() as { firstName: string; lastName: string; username: string; phone: string });
         } else {
             this.accountForm.markAllAsTouched();
         }

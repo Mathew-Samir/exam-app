@@ -38,12 +38,6 @@
             [isLoading]="isLoading()"
             (submitted)="onCreateAccount($event)"
         />
-        } @case (AuthStep.CreateNewPassword) {
-        <app-create-new-password
-            [flow]="AuthFlow.Signup"
-            [isLoading]="isLoading()"
-            (submitted)="onCreatePassword($event)"
-        />
         } }
     </div>
 </div>

@@ -1,0 +1,11 @@
+<div class="timer-container">
+    <svg viewBox="0 0 100 100" class="timer-svg">
+        <circle cx="50" cy="50" r="45" class="timer-bg"></circle>
+        <circle cx="50" cy="50" r="45" class="timer-progress"
+            [style.stroke-dashoffset]="282.6 - (282.6 * progressValue() / 100)"></circle>
+    </svg>
+    <div class="time-display">
+        <i class="pi pi-clock"></i>
+        <span>{{ formattedTime() }}</span>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="sidebar-container">
+  @if (user()) {
+    <div class="profile-header">
+      <div class="profile-info-wrapper">
+        <div class="avatar-container">
+          @if (user()?.profilePhoto) {
+            <img [src]="user()?.profilePhoto" alt="User Avatar" class="avatar-img" />
+          } @else {
+            <div class="initials-avatar">{{ userInitials() }}</div>
+          }
+        </div>
+        <div class="user-details">
+          <h3 class="user-name">{{ user()?.firstName }} {{ user()?.lastName }}</h3>
+          <p class="user-email">{{ user()?.email }}</p>
+        </div>
+      </div>
+    </div>
+  }
+  <div class="menu-items">
+    <button
+      (click)="onProfileClick()"
+      class="menu-item"
+      [class.active]="activeView() === 'profile'"
+    >
+      <i class="pi pi-user"></i>
+      <span>Profile</span>
+    </button>
+
+    <button
+      (click)="onChangePasswordClick()"
+      class="menu-item"
+      [class.active]="activeView() === 'change-password'"
+    >
+      <i class="pi pi-lock"></i>
+      <span>Change Password</span>
+    </button>
+  </div>
+
+  <div class="logout-container">
+    <button (click)="logout()" class="logout-btn">
+      <i class="pi pi-sign-out"></i>
+      <span>Logout</span>
+    </button>
+  </div>
+</div>

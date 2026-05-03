@@ -1,0 +1,115 @@
+/* Header */
+
+section{
+  gap:24px;
+  width: 100%;
+
+}
+.header-container{
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+      .back-btn{
+      display: flex;
+      padding: 26px 7px;
+      background: white;
+      border: 1px solid var(--blue-600);
+    }
+}
+.header-dashboard {
+  overflow: hidden;
+  width: 100%;
+    background: var(--blue-600);
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    position: relative;
+
+    p{
+      color: var(--white);
+      font-size: 32px;
+      font-weight: 600;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin: 0;
+    }
+    .header-dashboard-img{
+      width:45px;
+      height:45px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+
+
+  p {
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: var(--gray-400);
+  }
+
+  .breadcrumb-container {
+    width: 100%;
+
+    ::ng-deep {
+      .p-breadcrumb {
+        background: transparent;
+        border: none;
+        padding: 0;
+      }
+
+      .p-breadcrumb-list {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .p-breadcrumb-item-link {
+        color: #64748b;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        transition: color 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        &:hover {
+          color: #0f172a;
+        }
+      }
+
+      .p-breadcrumb-item-text {
+        // Any specific text styles
+      }
+
+      .p-menuitem-separator {
+        color: #94a3b8;
+        font-size: 0.75rem;
+      }
+
+      .p-breadcrumb-home .p-menuitem-link {
+        color: #64748b;
+
+        &:hover {
+          color: #0f172a;
+        }
+      }
+    }
+  }
+}
